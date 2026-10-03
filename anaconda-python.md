@@ -1,4 +1,3 @@
-```markdown
 从零开始配置 Jupyter + Python
 
 阅读指引
@@ -118,26 +117,7 @@ jupyter notebook
 print("Anaconda env 虚拟环境配置成功")
 
 核心库可用性测试
-import numpy as np# VSCode 虚拟环境无法选中问题排查 & 解决总结
-
-## 现象
-
-VSCode Python 插件识别不到 / 选不中 conda 创建的虚拟环境，打开解释器列表看不到目标 env，或者选中后不生效，插件日志打印 Python-envs 相关配置信息，`defaultEnvManager` 显示`undefined`。
-
-## 你的排查处理步骤
-
-1. **查看 Python 插件日志**
-打开插件输出日志，看到 Python-envs 扩展信息，配置项`workspaceFolderValue`、`workspaceValue`都是 undefined，代表**工作区没有指定环境管理器**，默认使用 venv，不会自动扫描 conda 环境。
-2. **确认虚拟环境本身有效**
-在终端用命令查看 conda 环境、环境内 Python 版本，验证 conda 环境本身创建正常、能在命令行激活，排除环境损坏。
-3. **核心修复操作**
-   - 方式 1：在 VSCode 设置里，配置 Python 插件，开启 Conda 环境扫描；修改`python.condaPath`，指定 conda 可执行文件路径，让插件找到 conda。
-   - 方式 2：手动选择解释器：`Ctrl+Shift+P` → Python: Select Interpreter → 手动找到 conda 环境下的 python 可执行文件（不用等插件自动列出）。
-   - 方式 3：检查插件版本：Python 插件新版本存在 bug，必要时降级 Python 扩展版本。
-4. **辅助检查项**
-   - 确认当前终端 shell 识别 conda（初始化 conda，不然 VSCode 内嵌终端看不到 conda）
-   - 检查工作区`.vscode/settings.json`，删掉冲突的旧 python 路径配置
-   - 重启 VSCode、重载窗口，使配置生效
+import numpy as np
 arr = np.array([1,2,3,4,5])
 print("Numpy 数组测试结果：", arr)
 ```
